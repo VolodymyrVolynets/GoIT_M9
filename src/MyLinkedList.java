@@ -13,7 +13,7 @@ public class MyLinkedList<E> {
             head = new Node<>(value);
             tail = head;
         } else {
-            Node<E> newNode = new Node(value, tail);
+            Node<E> newNode = new Node<>(value, tail);
             tail.setNext(newNode);
             tail = newNode;
         }
@@ -35,7 +35,7 @@ public class MyLinkedList<E> {
          } else if (index == size - 1) { // Remove tail
              tail = tail.getPrev(); // Change tail to a prev node
              tail.setNext(null); // And set new tail next node as null
-         } else { // Remove Node in a middle
+         } else { // Remove Node in the middle
              Node<E> currentNode = getNode(index);
              Node<E> prevNode = currentNode.getPrev();
              Node<E> nextNode = currentNode.getNext();
@@ -86,7 +86,7 @@ public class MyLinkedList<E> {
         }
     }
 
-    private static class Node<E> {
+    private static final class Node<E> {
         private E item;
         private Node<E> prev;
         private Node<E> next;
@@ -145,28 +145,28 @@ class MyLinkedListTest {
 
         // Test removing an element in the middle
         list.remove(1);
-        System.out.println("\nAfter removing the second element:");
+        System.out.println("After removing the second element:");
         printList(list); // Expected output: One Three
 
         // Test removing the head
         list.remove(0);
-        System.out.println("\nAfter removing the first element:");
+        System.out.println("After removing the first element:");
         printList(list); // Expected output: Three
 
         // Test adding another element
         list.add("Four");
-        System.out.println("\nAfter adding another element:");
+        System.out.println("After adding another element:");
         printList(list); // Expected output: Three Four
 
         // Test clear
         list.clear();
-        System.out.println("\nAfter clearing the list:");
+        System.out.println("After clearing the list:");
         printList(list); // Expected output: <empty>
 
         // Test adding elements after clearing
         list.add("Five");
         list.add("Six");
-        System.out.println("\nAfter adding two more elements:");
+        System.out.println("After adding two more elements:");
         printList(list); // Expected output: Five Six
     }
 
@@ -177,6 +177,7 @@ class MyLinkedListTest {
         if(list.size() == 0) {
             System.out.print("<empty>");
         }
+        System.out.println();
     }
 }
 

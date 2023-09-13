@@ -37,9 +37,7 @@ public class MyArrayList <E> {
     }
 
     public void clear() {
-        for (int i = 0; i < arrData.length; i++) {
-            arrData[i] = null;
-        }
+        Arrays.fill(arrData, null);
 
         size = 0;
     }
